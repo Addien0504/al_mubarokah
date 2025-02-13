@@ -554,8 +554,8 @@
                                     <img src="img/team-4.jpg" class="img-fluid w-100" alt="">
                                     <div class="team-content text-dark text-center py-3">
                                         <div class="team-content-inner">
-                                            <h5 class="mb-0">Nahiyan Momen</h5>
-                                            <p class="text-dark">Teacher</p>
+                                            <h5 class="mb-0">Pelita Al Mubarokah</h5>
+                                            <p class="text-dark">Guru Pengasuh</p>
                                             <div class="team-icon d-flex align-items-center justify-content-center">
                                                 <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
                                                 <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-twitter"></i></a>
@@ -677,19 +677,101 @@
                 <div class="border-top border-secondary pb-4"></div>
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Dindin Wahyudin</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="#">Addien.art</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom" href="addien.wahyudin0504@gmail.com">Addien.art</a>
+                        Designed By <a class="border-bottom" href="addien.wahyudin0504@gmail.com">Dindin Wahyudin</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Footer End -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Keuangan Masjid Jami Al-Mubaroka</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        .total { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Laporan Keuangan Masjid Jami Al-Mubaroka</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+                <th>Pemasukan (Rp)</th>
+                <th>Pengeluaran (Rp)</th>
+                <th>Saldo (Rp)</th>
+                <th>Sumber Dana</th>
+                <th>Jenis Pengeluaran</th>
+            </tr>
+        </thead>
+        <tbody id="laporanBody">
+            <!-- Data akan ditambahkan melalui JavaScript -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="total">Total</td>
+                <td id="totalPemasukan" class="total">0</td>
+                <td id="totalPengeluaran" class="total">0</td>
+                <td id="totalSaldo" class="total">0</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tfoot>
+    </table>
 
+    <script>
+        const laporanData = [
+            { tanggal: '2025-02-01', keterangan: 'Infaq & Shodaqoh', pemasukan: 5000000, pengeluaran: 0, saldo: 5000000, sumber: 'contoh', jenis: '-' },
+            { tanggal: 'null', keterangan: 'contoh', pemasukan: 0, pengeluaran: 0, saldo: 0, sumber: 'Kas Masjid', jenis: 'Operasional' },
+            { tanggal: 'null', keterangan: 'contoh', pemasukan: 0, pengeluaran: 0, saldo: 0, sumber: 'Donatur', jenis: '-' },
+            { tanggal: 'null', keterangan: 'contoh', pemasukan: 0, pengeluaran: 0, saldo: 0, sumber: 'Kas Masjid', jenis: 'Operasional' },
+            { tanggal: 'null', keterangan: 'contoh', pemasukan: 0, pengeluaran: 0, saldo: 0, sumber: 'Kas Masjid', jenis: 'Kematian' },
+            { tanggal: 'null', keterangan: 'contoh', pemasukan: 0, pengeluaran: 0, saldo: 0, sumber: 'Kas Masjid', jenis: 'Kegiatan Keagamaan' }
+        ];
+
+        function loadLaporan() {
+            let laporanBody = document.getElementById('laporanBody');
+            let totalPemasukan = 0;
+            let totalPengeluaran = 0;
+            let saldoAkhir = 0;
+
+            laporanData.forEach(item => {
+                let row = document.createElement('tr');
+                row.innerHTML = `<td>${item.tanggal}</td>
+                                 <td>${item.keterangan}</td>
+                                 <td>${item.pemasukan.toLocaleString()}</td>
+                                 <td>${item.pengeluaran.toLocaleString()}</td>
+                                 <td>${item.saldo.toLocaleString()}</td>
+                                 <td>${item.sumber}</td>
+                                 <td>${item.jenis}</td>`;
+                laporanBody.appendChild(row);
+                totalPemasukan += item.pemasukan;
+                totalPengeluaran += item.pengeluaran;
+                saldoAkhir = item.saldo;
+            });
+
+            document.getElementById('totalPemasukan').textContent = totalPemasukan.toLocaleString();
+            document.getElementById('totalPengeluaran').textContent = totalPengeluaran.toLocaleString();
+            document.getElementById('totalSaldo').textContent = saldoAkhir.toLocaleString();
+        }
+
+        window.onload = loadLaporan;
+    </script>
+</body>
+</html>
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>   
